@@ -2,27 +2,50 @@
 using namespace std;
 int main()
 {
-    int n1, m1, n2, m2;
-    cout << "enter the size of the array: ";
-    cin >> n1 >> m1;
-    int arr[n1][m1];
-    cout << "enter the arrays: ";
-    for (int i = 0; i < n1; i++)
+    int n, m, o;
+    cin >> n >> m >> o;
+    int n1[n][m];
+    int n2[m][o];
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < m1; j++)
+        for (int j = 0; j < m; j++)
         {
-            cin >> arr[i][j];
+            cin >> n1[i][j];
         }
     }
-    cout << "enter the size of the array: ";
-    cin >> n2 >> m2;
-    int arr[n2][m2];
-    cout << "enter the arrays: ";
-    for (int i = 0; i < n1; i++)
+    for (int i = 0; i < m; i++)
     {
-        for (int j = 0; j < m1; j++)
+        for (int j = 0; j < o; j++)
         {
-            cin >> arr[i][j];
+            cin >> n2[i][j];
         }
     }
+    int ans[n][o];
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < o; j++)
+        {
+            ans[i][j] = 0;
+        }
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < o; j++)
+        {
+            for (int k = 0; k < m; k++)
+            {
+                ans[i][j] += n1[i][k] * n2[k][j];
+            }
+        }
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < o; j++)
+            cout << ans[i][j] << " ";
+        cout << endl;
+    }
+    return 0;
 }
